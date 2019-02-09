@@ -1,0 +1,11 @@
+$navbar-bg: #333 !default;
+$navbar-text: #fff !default;
+
+.navbar {
+    grid-column-start: sidebar-start;
+    grid-column-end: content-col-end;
+    grid-row-start: navbar-start;
+    grid-row-end: navbar-end;
+    background-color: $navbar-bg;
+    color: $navbar-text;
+}

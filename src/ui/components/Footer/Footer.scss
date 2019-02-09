@@ -1,0 +1,7 @@
+.footer {
+    background-color: #aaa;
+    grid-column-start: sidebar-start;
+    grid-column-end: content-col-end;
+    grid-row-start: footer-start;
+    grid-row-end: footer-end;
+}

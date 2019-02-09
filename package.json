@@ -1,0 +1,40 @@
+{
+	"name": "site",
+	"version": "1.0.0",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/shabla/site.git"
+	},
+	"author": "Mathieu Collinge",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/shabla/site/issues"
+	},
+	"scripts": {
+		"start": "webpack-dev-server --config webpack/webpack.dev.config.js --mode development"
+	},
+	"homepage": "https://github.com/shabla/site#readme",
+	"dependencies": {
+		"@babel/core": "^7.2.2",
+		"@babel/preset-env": "^7.3.1",
+		"@babel/preset-react": "^7.0.0",
+		"autoprefixer": "^9.4.7",
+		"babel-loader": "^8.0.5",
+		"classnames": "^2.2.6",
+		"css-loader": "^2.1.0",
+		"node-sass": "^4.11.0",
+		"normalize.css": "^8.0.1",
+		"postcss-loader": "^3.0.0",
+		"prop-types": "^15.6.2",
+		"react": "^16.8.1",
+		"react-dom": "^16.8.1",
+		"react-hot-loader": "^4.6.5",
+		"react-router": "^4.3.1",
+		"resolve-url-loader": "^3.0.0",
+		"sass-loader": "^7.1.0",
+		"style-loader": "^0.23.1",
+		"webpack": "^4.29.3",
+		"webpack-cli": "^3.2.3",
+		"webpack-dev-server": "^3.1.14"
+	}
+}

@@ -1,0 +1,8 @@
+$ui-button-border-size: 1px !default;
+$ui-button-border-color: #aaa !default;
+
+.ui-button {
+    border-width: $ui-button-border-size;
+    border-color: $ui-button-border-color;
+    border-style: solid;
+}

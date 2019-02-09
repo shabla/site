@@ -1,0 +1,8 @@
+.sidebar {
+    grid-column-start: sidebar-start;
+    grid-column-end: sidebar-end;
+    grid-row-start: navbar-end;
+    grid-row-end: content-row-end;
+    background-color: #444;
+    color: white;
+}
