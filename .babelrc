@@ -1,6 +1,17 @@
 {
     "presets": [
         "@babel/preset-env",
-        "@babel/preset-react"
+        "@babel/preset-react",
+    ],
+    "plugins": [
+        "@quickbaseoss/babel-plugin-styled-components-css-namespace",
+        [
+            "babel-plugin-styled-components",
+            {
+                "minify": false,
+                "pure": true,
+                "transpileTemplateLiterals": false
+            }
+        ]
     ]
 }

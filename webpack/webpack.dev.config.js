@@ -13,7 +13,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            'ui': path.resolve(PATH_SRC, "ui")
+            components: path.resolve(PATH_SRC, 'components')
         }
     },
     module: {
@@ -25,39 +25,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                include: /node_modules/,
                 use: ['style-loader', 'css-loader']
-            },
-            {
-                test: /\.scss$/,
-                exclude: /node_modules/,
-                use: [
-                    {
-                        loader: 'style-loader',
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader'
-                    },
-                    {
-                        loader: 'resolve-url-loader',
-                        options: {
-                            sourceMap: true,
-                            sourceMapContents: false
-                        }
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    }
-                ]
             }
         ]
     },
