@@ -13,7 +13,8 @@ module.exports = {
     },
     resolve: {
         alias: {
-            components: path.resolve(PATH_SRC, 'components')
+            components: path.resolve(PATH_SRC, 'components'),
+            ui: path.resolve(PATH_SRC, 'ui')
         }
     },
     module: {
