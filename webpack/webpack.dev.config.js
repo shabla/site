@@ -17,6 +17,7 @@ module.exports = {
             ui: path.resolve(PATH_SRC, 'ui')
         }
     },
+    devtool: 'eval-source-map',
     module: {
         rules: [
             {

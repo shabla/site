@@ -1,35 +1,14 @@
 import React, { useState } from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import { connect } from "react-redux";
+import styled from "styled-components";
 
 import { Button } from "ui";
 import { Menu, InventoryGrid, Window } from "components";
+import GlobalStyle from "../../styles/GlobalStyle";
+import actions from "../../actions"
+import * as utils from "../../utils";
 
-const GlobalStyle = createGlobalStyle`
-    html {
-        font-size: 62.5%;
-    }
-
-    body {
-        font-size: 1.4rem;
-        font-family: 'Roboto', sans-serif;
-    }
-
-    html, body, #root {
-        min-height: 100vh;
-    }
-
-    * {
-        user-select: none;
-    }
-`;
-
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-const App = styled(({ className }) => {
+const App = styled(({ className, doTest, testVal }) => {
 
     let [items, setItems] = useState([
         { x: 2, y: 5, width: 2, height: 3 },
@@ -76,8 +55,8 @@ const App = styled(({ className }) => {
 
     const addItem = () => {
         let item = {
-            width: getRandomInt(1, 2),
-            height: getRandomInt(1, 3)
+            width: utils.getRandomInt(1, 2),
+            height: utils.getRandomInt(1, 3)
         };
 
         const availableSlot = getAvailableSlot(items, item);
@@ -95,9 +74,14 @@ const App = styled(({ className }) => {
         setItems([...items, item]);
     }
 
+    console.log(testVal)
+
     return (
         <>
             <GlobalStyle />
+
+            <Button onClick={doTest}>Add item</Button>
+
 
             <div className={className}>
                 <Window>
@@ -125,4 +109,12 @@ const App = styled(({ className }) => {
     }
 `;
 
-export default App;
+const stateToProp = state => ({
+    testVal: state.test.val
+});
+
+const dispatchToProp = ({
+    doTest: actions.test.testAction
+});
+
+export default connect(stateToProp, dispatchToProp)(App);
