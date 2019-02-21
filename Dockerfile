@@ -9,6 +9,8 @@ COPY webpack /webpack
 COPY src /src
 COPY dist /dist
 
+EXPOSE 8080
+
 RUN yarn
 
 # CMD if [ ${APP_ENV} = production ]; \
@@ -20,7 +22,5 @@ RUN yarn
 #     else \
 #     yarn start; \
 #     fi
-
-EXPOSE 8080
 
 RUN yarn start

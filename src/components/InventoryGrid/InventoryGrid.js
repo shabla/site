@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const BOX_SIZE = 32;
 
-const InventoryItem = styled(({ className, slotX, slotY, width, height }) => {
+const InventoryItem = styled(({ className }) => {
     return <div className={className}></div>
 })`
     position: absolute;
@@ -15,7 +15,6 @@ const InventoryItem = styled(({ className, slotX, slotY, width, height }) => {
 `;
 
 const InventoryGrid = styled(({ className, width, height, items }) => {
-
     const rows = [];
     for (let y = 0; y < height; y++) {
         const columns = [];
@@ -28,7 +27,13 @@ const InventoryGrid = styled(({ className, width, height, items }) => {
     return (
         <div className={className}>
             {items.map((item, index) =>
-                <InventoryItem key={index} slotX={item.x} slotY={item.y} width={item.width} height={item.height} />
+                <InventoryItem
+                    key={index}
+                    slotX={item.x}
+                    slotY={item.y}
+                    width={item.width}
+                    height={item.height}
+                />
             )}
             {rows}
         </div>

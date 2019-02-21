@@ -37,7 +37,7 @@ module.exports = {
         contentBase: PATH_DIST,
         hot: true,
         clientLogLevel: 'error',
-        port: 80,
+        port: 8080,
         host: '0.0.0.0'
     }
 };
