@@ -2,7 +2,7 @@ import produce from "immer";
 import { actionTypes } from "../constants"
 
 const initialState = {
-    val: "default val"
+    val: 0
 };
 
 export default (state = initialState, action) => {

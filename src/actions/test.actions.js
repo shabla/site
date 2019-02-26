@@ -1,8 +1,8 @@
 import { actionTypes } from "../constants";
 
-export const testAction = () => {
+export const testAction = val => {
     return {
         type: actionTypes.test.TEST_ACTION,
-        payload: "hello!"
+        payload: val
     };
 };

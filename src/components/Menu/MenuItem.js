@@ -1,30 +1,14 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import * as styles from "../../styles";
+import * as styles from "styles";
 
-const MenuItem = props => {
-
-    const onClick = e => {
-        if (!props.onClick) {
-            return;
-        }
-
-        console.log(e)
-
-        props.onClick("hello");
-    };
-
+const MenuItem = ({ onClick, className, children }) => {
     return (
-        <div className={props.className} onClick={onClick}>
-            {props.children}
+        <div className={className} onClick={onClick}>
+            {children}
         </div>
     );
-};
-
-MenuItem.propTypes = {
-    onClick: PropTypes.func
 };
 
 export default styled(MenuItem)`

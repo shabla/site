@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const WindowTitleBar = styled(({ className, title, onMouseDown }) => (
-    <div className={className} onMouseDown={onMouseDown}>
+const WindowTitleBar = styled(({ className, title }) => (
+    <div className={className}>
         {title}
     </div>
 ))`

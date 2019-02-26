@@ -14,7 +14,13 @@ module.exports = {
     resolve: {
         alias: {
             components: path.resolve(PATH_SRC, 'components'),
-            ui: path.resolve(PATH_SRC, 'ui')
+            constants: path.resolve(PATH_SRC, 'constants'),
+            actions: path.resolve(PATH_SRC, 'actions'),
+            reducers: path.resolve(PATH_SRC, 'reducers'),
+            selectors: path.resolve(PATH_SRC, 'selectors'),
+            hooks: path.resolve(PATH_SRC, 'hooks'),
+            ui: path.resolve(PATH_SRC, 'ui'),
+            styles: path.resolve(PATH_SRC, 'styles')
         }
     },
     devtool: 'eval-source-map',
