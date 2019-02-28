@@ -45,6 +45,7 @@ module.exports = {
         hot: true,
         clientLogLevel: 'error',
         port: 8080,
-        host: '0.0.0.0'
+        host: '0.0.0.0',
+        open: true
     }
 };

@@ -55,8 +55,6 @@ const ComponentsFormatters = {
 }
 
 const ItemTooltip = styled(({ className, item }) => {
-    console.log(item)
-
     return (
         <div className={className}>
             {ComponentsFormatters.name(item)}
