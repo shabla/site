@@ -1,5 +1,7 @@
-import * as test from "./test.actions"
+import * as items from "./items.actions"
+import * as inventory from "./inventory.actions"
 
 export default {
-    test
+    items,
+    inventory,
 }

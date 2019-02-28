@@ -1,39 +1,16 @@
-import * as utils from "../../utils";
-import { itemsData } from "constants";
+import { getRandomPrefix, getRandomSuffix } from "./affixes.factory";
+import itemsData from "constants/items_data.json";
+import * as utils from "../utils";
 
-const getRandomType = () => {
+export const getRandomType = () => {
     return { ...itemsData.types[utils.getRandomInt(0, itemsData.types.length - 1)] };
 };
 
-const getRandomSubType = subTypes => {
+export const getRandomSubType = subTypes => {
     return { ...subTypes[utils.getRandomInt(0, subTypes.length - 1)] };
 }
 
-const getRandomPrefix = () => {
-    const prefixes = [
-        "Super",
-        "Ultra",
-        "Decent",
-        "Amazing",
-        "Cheap"
-    ];
-
-    return prefixes[utils.getRandomInt(0, prefixes.length - 1)];
-}
-
-const getRandomSuffix = () => {
-    const suffixes = [
-        "of doom",
-        "of light",
-        "of darkness",
-        "of zigzag",
-        "of blight"
-    ];
-
-    return suffixes[utils.getRandomInt(0, suffixes.length - 1)];
-}
-
-const getRandomQuality = () => {
+export const getRandomQuality = () => {
     const qualities = [
         { name: "Common", color: "fff" }, // white
         { name: "Uncommon", color: "909bec" }, // blue
