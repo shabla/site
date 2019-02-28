@@ -3,15 +3,27 @@ import styled from "styled-components";
 
 const ComponentsFormatters = {
     name: item => {
-        const name = `${item.prefix} ${item.subType.name.toLowerCase()} ${item.suffix}`;
-        return <div className="name">{name}</div>
+        const subTypeName = item.subType.name;
+
+        const nameFormatterByQuality = {
+            Common: () => `Common ${subTypeName}`,
+            Uncommon: () => `${item.prefixes[0].name} ${subTypeName.toLowerCase()} ${item.suffixes[0].name}`,
+            Rare: () => `Rare ${subTypeName}`,
+            Legendary: () => `Legandary ${subTypeName}`
+        };
+
+        return (
+            <div className="name">
+                {nameFormatterByQuality[item.quality.name]() || `Unknown quality ${subTypeName}`}
+            </div>
+        );
     },
     typeName: item => {
         return <div className="type-name">{item.type.name}</div>
     },
     defense: item => {
         return item.defense &&
-            <div>Defense: {item.defense}</div>
+            <div><span>Defense:</span> {item.defense}</div>
     },
     requirements: item => {
         const statsRequirements = [];
@@ -36,21 +48,64 @@ const ComponentsFormatters = {
 
         if (statsRequirements.length > 0) {
             return [
-                <hr key="hr-top-req" />,
+                <hr key="hr-before-reqs" />,
                 ...statsRequirements.map(req => {
-                    return <div key={"req-" + req.name}>Required {req.name}: {req.value}</div>
-                }),
-                <hr key="hr-bot-req" />
+                    return <div key={"req-" + req.name}><span>Required {req.name}:</span> {req.value}</div>
+                })
             ];
         };
     },
     canAttack: item => {
         return item.canAttack && [
-            <div key="damage">Damage: {item.canAttack.minDamage}-{item.canAttack.maxDamage}</div>,
-            <div key="critchance">Critical Chance: {item.canAttack.baseCrit * 100}%</div>,
-            <div key="aps">Attacks per second: {item.canAttack.speed}</div>,
-            <div key="range">Range: {item.canAttack.range}</div>,
+            <div key="damage"><span>Damage:</span> {item.canAttack.minDamage}-{item.canAttack.maxDamage}</div>,
+            <div key="critchance"><span>Critical Chance:</span> {item.canAttack.baseCrit * 100}%</div>,
+            <div key="aps"><span>Attacks per second:</span> {item.canAttack.speed}</div>,
+            <div key="range"><span>Range:</span> {item.canAttack.range}</div>,
         ];
+    },
+    affixes: item => {
+        const affixes = [];
+
+        const modifiersById = {};
+        item.prefixes.forEach(prefix => {
+            Object.keys(prefix.modifiers).forEach(modifierId => {
+                const value = prefix.modifiers[modifierId];
+
+                if (modifiersById[modifierId]) {
+                    modifiersById[modifierId].value += value;
+                } else {
+                    modifiersById[modifierId] = {
+                        id: prefix.id,
+                        format: prefix.formatter || `unknown prefix(${prefix.id})`,
+                        value
+                    };
+                }
+            });
+        });
+
+        item.suffixes.forEach(suffix => {
+            Object.keys(suffix.modifiers).forEach(modifierId => {
+                const value = suffix.modifiers[modifierId];
+
+                if (modifiersById[modifierId]) {
+                    modifiersById[modifierId].value += value;
+                } else {
+                    modifiersById[modifierId] = {
+                        id: suffix.id,
+                        format: suffix.formatter || `unknown suffix(${suffix.id})`,
+                        value
+                    };
+                }
+            });
+        });
+
+        Object.keys(modifiersById).forEach((modifierId, index) => {
+            const modifier = modifiersById[modifierId];
+            const format = modifier.format.replace(`{${modifierId}}`, modifier.value);
+            affixes.push(<div className="affix" key={`prefix-${modifier.id}`}>{format}</div>);
+        });
+
+        return affixes;
     }
 }
 
@@ -62,6 +117,8 @@ const ItemTooltip = styled(({ className, item }) => {
             {ComponentsFormatters.defense(item)}
             {ComponentsFormatters.canAttack(item)}
             {ComponentsFormatters.requirements(item)}
+            <hr key="hr-before-affixes" />
+            {ComponentsFormatters.affixes(item)}
         </div>
     )
 })`
@@ -83,6 +140,14 @@ const ItemTooltip = styled(({ className, item }) => {
         font-weight: 400;
         color: #bbb;
         margin-bottom: 5px;
+    }
+
+    span {
+        color: #ccc;
+    }
+
+    .affix {
+        color: #bebeff;
     }
 
     hr {

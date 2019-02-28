@@ -1,0 +1,170 @@
+[
+    {
+        "id": "life",
+        "formatter": "+{life} life",
+        "tiers": [
+            {
+                "tier": 1,
+                "name": "of health",
+                "modifiers": {
+                    "life": {
+                        "min": 10,
+                        "max": 20
+                    }
+                }
+            },
+            {
+                "tier": 2,
+                "name": "of life",
+                "modifiers": {
+                    "life": {
+                        "min": 21,
+                        "max": 30
+                    }
+                }
+            },
+            {
+                "tier": 3,
+                "name": "of fitness",
+                "modifiers": {
+                    "life": {
+                        "min": 31,
+                        "max": 40
+                    }
+                }
+            },
+            {
+                "tier": 4,
+                "name": "of constitution",
+                "modifiers": {
+                    "life": {
+                        "min": 41,
+                        "max": 50
+                    }
+                }
+            },
+            {
+                "tier": 5,
+                "name": "of vigor",
+                "modifiers": {
+                    "life": {
+                        "min": 51,
+                        "max": 60
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "id": "energy",
+        "formatter": "+{energy} energy",
+        "tiers": [
+            {
+                "tier": 1,
+                "name": "Energy1",
+                "modifiers": {
+                    "energy": {
+                        "min": 10,
+                        "max": 20
+                    }
+                }
+            },
+            {
+                "tier": 2,
+                "name": "Energy2",
+                "modifiers": {
+                    "energy": {
+                        "min": 21,
+                        "max": 30
+                    }
+                }
+            },
+            {
+                "tier": 3,
+                "name": "Energy3",
+                "modifiers": {
+                    "energy": {
+                        "min": 31,
+                        "max": 40
+                    }
+                }
+            },
+            {
+                "tier": 4,
+                "name": "Energy4",
+                "modifiers": {
+                    "energy": {
+                        "min": 41,
+                        "max": 50
+                    }
+                }
+            },
+            {
+                "tier": 5,
+                "name": "Energy5",
+                "modifiers": {
+                    "energy": {
+                        "min": 51,
+                        "max": 60
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "id": "defense",
+        "formatter": "+{def} defense",
+        "tiers": [
+            {
+                "tier": 1,
+                "name": "Defense1",
+                "modifiers": {
+                    "def": {
+                        "min": 10,
+                        "max": 20
+                    }
+                }
+            },
+            {
+                "tier": 2,
+                "name": "Defense2",
+                "modifiers": {
+                    "def": {
+                        "min": 21,
+                        "max": 30
+                    }
+                }
+            },
+            {
+                "tier": 3,
+                "name": "Defense3",
+                "modifiers": {
+                    "def": {
+                        "min": 31,
+                        "max": 40
+                    }
+                }
+            },
+            {
+                "tier": 4,
+                "name": "Defense4",
+                "modifiers": {
+                    "def": {
+                        "min": 41,
+                        "max": 50
+                    }
+                }
+            },
+            {
+                "tier": 5,
+                "name": "Defense5",
+                "modifiers": {
+                    "def": {
+                        "min": 51,
+                        "max": 60
+                    }
+                }
+            }
+        ]
+    }
+]

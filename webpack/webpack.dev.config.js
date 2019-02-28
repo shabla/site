@@ -20,7 +20,8 @@ module.exports = {
             selectors: path.resolve(PATH_SRC, 'selectors'),
             hooks: path.resolve(PATH_SRC, 'hooks'),
             ui: path.resolve(PATH_SRC, 'ui'),
-            styles: path.resolve(PATH_SRC, 'styles')
+            styles: path.resolve(PATH_SRC, 'styles'),
+            assets: path.resolve(PATH_SRC, 'assets')
         }
     },
     devtool: 'eval-source-map',
@@ -34,6 +35,10 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: ['file-loader']
             }
         ]
     },

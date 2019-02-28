@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Common",
+        "color": "fff",
+        "prefixes": 0,
+        "suffixes": 0
+    },
+    {
+        "name": "Uncommon",
+        "color": "909bec",
+        "prefixes": 1,
+        "suffixes": 1
+    },
+    {
+        "name": "Rare",
+        "color": "e0cf48",
+        "prefixes": 2,
+        "suffixes": 2
+    },
+    {
+        "name": "Legendary",
+        "color": "dc6dff",
+        "prefixes": 2,
+        "suffixes": 2,
+        "specialAffix": 1
+    }
+]

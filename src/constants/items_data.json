@@ -5,6 +5,7 @@
             "subTypes": [
                 {
                     "name": "Shortsword",
+                    "image": "sword-1x3.png",
                     "canAttack": {
                         "minDamage": 1,
                         "maxDamage": 3,
@@ -16,6 +17,44 @@
                     "minDex": 12,
                     "invWidth": 1,
                     "invHeight": 3
+                },
+                {
+                    "name": "2-Handed Axe",
+                    "image": "2h-axe-2x4.png",
+                    "canAttack": {
+                        "minDamage": 3,
+                        "maxDamage": 10,
+                        "baseCrit": 0.05,
+                        "speed": 1.0,
+                        "range": 2
+                    },
+                    "minStr": 30,
+                    "invWidth": 2,
+                    "invHeight": 4
+                }
+            ]
+        },
+        {
+            "name": "armor",
+            "subTypes": [
+                {
+                    "name": "Boots",
+                    "image": "boots-2x2.png",
+                    "minDefense": 12,
+                    "maxDefense": 26,
+                    "invWidth": 2,
+                    "invHeight": 2
+                }
+            ]
+        },
+        {
+            "name": "jewellery",
+            "subTypes": [
+                {
+                    "name": "Ring",
+                    "image": "ring-1x1.png",
+                    "invWidth": 1,
+                    "invHeight": 1
                 }
             ]
         }

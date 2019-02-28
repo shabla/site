@@ -24,6 +24,7 @@ const InventoryGrid = styled(({ className, width, height, items, boxSize, showTo
                 <InventoryItem
                     key={index}
                     showToolTip={() => showItemToolTip(item)}
+                    image={item.subType.image}
                     hideToolTip={hideTooltip}
                     boxSize={boxSize}
                     slotX={item.inventory.x}
