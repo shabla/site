@@ -3,81 +3,55 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import { Button } from "ui";
-import { Menu, Tooltip, InventoryGrid, Window } from "components";
-import GlobalStyle from "styles/GlobalStyle";
-import actions from "actions"
-import selectors from "../../selectors";
+import { Menu, Tooltip, Window } from "components";
+import * as inventoryModule from "../../modules/inventory";
 
-import { generateRandomItem } from "../../factories/item.factory";
+const StyledApp = styled(({ className, children }) => {
+    return <div className={className}>{children}</div>
+})`
+    min-height: 100vh;
+    background-color: #ddd;
 
-const App = styled(({
-    className,
+    * {
+        box-sizing: border-box;
+    }
 
+    html {
+        font-size: 62.5%;
+    }
+
+    body {
+        font-size: 1.4rem;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    html, body, #root {
+        min-height: 100vh;
+    }
+`;
+
+const App = ({
     // Items
-    items,
-    addItem,
+    // items,
+    // addItem,
 
-    // Inventory
-    boxSize,
-    inventoryWidth,
-    inventoryHeight,
-    itemsByInventorySlot,
+    // // Inventory
+    // boxSize,
+    // inventoryWidth,
+    // inventoryHeight,
 }) => {
 
-    const [tooltipContent, setTooltipContent] = useState(null);
-
-    const findAvailableSlot = (itemsBySlot, width, height) => {
-        // try each slot as if it's the top left corner of the item
-        outer:
-        for (let topLeftX = 0; topLeftX < inventoryWidth; topLeftX++) {
-            for (let topLeftY = 0; topLeftY < inventoryHeight; topLeftY++) {
-                let isFree = true;
-
-                // check each slot required for the item to fit
-                slotcheck:
-                for (let y = topLeftY; y < topLeftY + height; y++) {
-                    for (let x = topLeftX; x < topLeftX + width; x++) {
-                        if (itemsBySlot[x] && itemsBySlot[x][y] || y >= inventoryWidth || x >= inventoryHeight) {
-                            isFree = false;
-                            break slotcheck;
-                        }
-                    }
-                }
-
-                if (isFree) {
-                    return { x: topLeftX, y: topLeftY }
-                }
-            }
-        }
-    };
-
-    const onAddItem = () => {
-        const item = generateRandomItem();
-        const availableSlot = findAvailableSlot(itemsByInventorySlot, item.inventory.width, item.inventory.height);
-
-        if (!availableSlot) {
-            console.warn("no slot available for", item)
-            return;
-        }
-
-        item.inventory.x = availableSlot.x;
-        item.inventory.y = availableSlot.y;
-
-        addItem({ item });
-    };
-
+    // const [tooltipContent, setTooltipContent] = useState(null);
     return (
-        <div className={className}>
-            <GlobalStyle />
-
-            <Tooltip>{tooltipContent}</Tooltip>
+        <StyledApp>
+            {/* <Tooltip>{tooltipContent}</Tooltip> */}
 
             <Window title="Inventory">
                 <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
-                    <Button onClick={onAddItem}>Add item</Button>
+                    <Button onClick={addItem}>Add item</Button>
                 </div>
 
-                <InventoryGrid
+                <inventoryModule.InventoryGrid
                     boxSize={boxSize}
                     width={inventoryWidth}
                     height={inventoryHeight}
@@ -88,30 +62,22 @@ const App = styled(({
             </Window>
 
             <Menu />
-        </div>
+        </StyledApp>
     );
-})`
-    min-height: 100vh;
-    background-color: #ddd;
-    padding: 100px;
-
-    * {
-        box-sizing: border-box;
-    }
-`;
+}
 
 const stateToProp = state => ({
-    items: state.items,
+    // items: state.items,
 
     // Inventory
-    itemsByInventorySlot: selectors.inventory.getInventoryItemsBySlot(state),
-    boxSize: state.inventory.boxSize,
-    inventoryWidth: state.inventory.width,
-    inventoryHeight: state.inventory.height,
+
+    // boxSize: state.inventory.boxSize,
+    // inventoryWidth: state.inventory.width,
+    // inventoryHeight: state.inventory.height,
 });
 
 const dispatchToProp = ({
-    addItem: actions.items.add,
+    // addItem: inventoryModule.addItem,
 });
 
 export default connect(stateToProp, dispatchToProp)(App);
